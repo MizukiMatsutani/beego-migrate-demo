@@ -1,0 +1,17 @@
+version: "3.9"
+volumes:
+  db-store:
+services:
+  db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - db-store:/var/lib/mysql:delegated
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: demo-db
+      MYSQL_USER: demo-user
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root
+      TZ: Asia/Tokyo
